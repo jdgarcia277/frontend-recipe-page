@@ -1,0 +1,233 @@
+/* ===========================
+   CSS Reset
+   ===========================
+*/
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+html{
+    color-scheme: light;
+}
+body {
+    min-height: 100vh;
+    background-color: var(--neutral_eggshell);
+}
+img, picture, svg, video{
+    display: block;
+    max-width: 100%;
+}
+
+/* ===========================
+   Font Imports
+   ===========================
+*/
+
+@font-face {
+    font-family: 'Young Serif';
+    src: url('./assets/fonts/young-serif/YoungSerif-Regular.ttf') format('truetype');
+    font-weight: 1 1000;
+}
+@font-face {
+    font-family: 'Outfit';
+    src: url('./assets/fonts/outfit/Outfit-VariableFont_wght.ttf') format('truetype');
+    font-weight: 1 1000;
+}
+
+/* ===========================
+   Root Variables
+   ===========================
+*/
+
+:root{
+    /* color variables */
+    --primary_nutmeg: hsl(14, 45%, 36%);
+    --primary_dark-raspberry: hsl(332, 51%, 32%);
+    --neutral_white: hsl(0, 0%, 100%);
+    --neutral_rose-white: hsl(330, 100%, 98%);
+    --neutral_eggshell: hsl(30, 54%, 90%);
+    --neutral_light-grey: hsl(30, 18%, 87%);
+    --neutral_wenge-brown: hsl(30, 10%, 34%);
+    --neutral_dark-charcoal: hsl(24, 5%, 18%);
+    --specific_attribution: hsl(228, 45%, 44%);
+
+    /* font variables */
+    --font-style_heading: 'Young Serif';
+    --font-style_content: 'Outfit';
+
+    --font-size_small: calc((11/16) * 1rem);
+    --font-size_default: calc((16/16) * 1rem);
+    --font-size_medium: calc((20/16) * 1rem);
+    --font-size_large: calc((28/16) * 1rem);
+    --font-size_xlarge: calc((36/16) * 1rem); /*changes to 40 during desktop */
+
+    --font-weight_normal: 400;
+    --font-weight_bold: 600;
+    --font-weight_extra-bold: 700;
+
+    /* spacing variables */
+    --spacing_default: calc((32/16) * 1rem);
+    --spacing_medium: calc((40/16) * 1rem);
+    --spacing_large: calc((123/16) * 1rem);
+
+    --intro_height: calc(171 / 812)dvh;
+}
+
+/* ===========================
+   Utility Classes
+   ===========================
+*/
+
+/* text classes */
+.text_small { font-size: var(--font-size_small); }
+.text_default { font-size: var(--font-size_default); }
+.text_medium { font-size: var(--font-size_medium); }
+.text_large { font-size: var(--font-size_large); }
+.text_xlarge { font-size: var(--font-size_xlarge); }
+
+/* ===========================
+   Font styling
+   ===========================
+   This section of css was added due to certain elements in the design
+   needing to be different fonts and colors
+*/
+
+/* body font styling */
+body {
+    font-family: var(--font-style_content);
+    color: var(--neutral_wenge-brown);
+    line-height: 150%;
+}
+
+/* font tag font styling */
+strong {
+    font-weight: var(--font-weight_extra-bold);
+}
+
+/* header tag font styling */
+h1, h2 {
+    font-family: var(--font-style_heading);
+}
+h1 {
+    color: var(--neutral_dark-charcoal);
+    line-height: 100%;
+}
+h2 {
+    color: var(--primary_nutmeg);
+}
+h3 {
+    font-weight: var(--font-weight_bold);
+    color: var(--primary_dark-raspberry);
+}
+
+/* list tag font styling */
+li::marker {
+    color: var(--primary_nutmeg);
+}
+ol li::marker {
+    font-weight: var(--font-weight_extra-bold);
+}
+
+
+/* ===========================
+   Main CSS Styles
+   ===========================
+*/
+
+/* article styling */
+article {
+    background-color: white;
+    max-width: 46rem; /* 736px */
+}
+article section:last-child {
+    padding-bottom: var(--spacing_medium);
+    margin-bottom: 0;
+}
+/* section styling */
+section {
+    margin: 2rem var(--spacing_default);
+}
+
+/* image styling */
+img {
+    margin-bottom: var(--spacing_medium);
+}
+
+/* paragraph styling */
+p {
+    margin: 1.5rem 0;
+}
+
+/* list styling */
+section ul, ol {
+    padding: 1.5rem;
+}
+
+li {
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+}
+
+/* header and paragraph margin within header */
+header h1, header p {
+    margin-left: var(--spacing_default);
+    margin-right: var(--spacing_default);
+}
+
+/* prep time section styling */
+.prep-time {
+    background-color: var(--neutral_rose-white);
+    margin: var(--spacing_default);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+}
+
+/* ingredients and instructions section styling */
+.ingredients, .instructions {
+    border-bottom: 1px solid var(--neutral_light-grey);
+}
+
+/* table styling */
+table {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--neutral_light-grey);
+    padding: 0.6rem;
+}
+tr :last-child {
+    color: var(--primary_nutmeg);
+    font-weight: var(--font-weight_extra-bold);
+}
+table :last-child {
+    border-bottom: none;
+}
+
+
+/* ===========================
+   Media Queries
+   ===========================
+*/
+
+/* desktop styles */
+@media (min-width: 43rem) {
+    :root {
+        --font-size_xlarge: calc((40/16) * 1rem); /*changed to 40 during desktop */
+    }
+    article {
+        margin: var(--spacing_large) auto;
+        padding: var(--spacing_default);
+        border-radius: 1.5rem;
+    }
+    img {
+        border-radius: 0.75rem;
+    }
+}
